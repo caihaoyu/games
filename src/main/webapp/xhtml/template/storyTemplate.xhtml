@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	lang="zh-CN"
+	 xml:lang="zh-CN">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="google-style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="doc.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="primefaces.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.wookmark.min.js"></h:outputScript>
+	<script type="text/javascript">
+	
+
+		function afa() {
+			alert(document.documentElement.clientHeight);
+		}
+
+		jQuery.datepicker.regional['zh_CN'] = {
+			closeText : '关闭',
+			prevText : '&#x3c;上月',
+			nextText : '下月&#x3e;',
+			currentText : '今天',
+			monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月',
+					'九月', '十月', '十一月', '十二月' ],
+			monthNamesShort : [ '一', '二', '三', '四', '五', '六', '七', '八', '九',
+					'十', '十一', '十二' ],
+			dayNames : [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+			dayNamesShort : [ '周日', '周一', '周二', '周三', '周四', '周五', '周六' ],
+			dayNamesMin : [ '日', '一', '二', '三', '四', '五', '六' ],
+			weekHeader : '周',
+			dateFormat : 'yy-mm-dd',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : true,
+			yearSuffix : '年'
+		};
+		jQuery.datepicker.setDefaults(jQuery.datepicker.regional['zh-CN']);
+		$("document")
+				.ready(function() {
+					$('.thumbnails').wookmark();
+				});
+						
+	</script>
+</h:head>
+<body>
+	<ui:insert name="navbar"></ui:insert>
+	
+	<h:form id="form" enctype="multipart/form-data">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12" id="test">
+					<div style="margin: 30px 0 0;">
+						<ui:insert name="main"></ui:insert>
+						<ui:insert name="dialog"></ui:insert>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ui:insert name="message"></ui:insert>
+		
+	</h:form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<h:outputStylesheet library="css" name="doc.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="jquery.2.0.3.min.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+		<style>
+		#test {
+        height:100%;
+        max-height:400px;
+    overflow:auto;
+}
+	</style>
+	<script type="text/javascript">
+		$("document").ready(function (){
+			$('#test').scrollspy()
+		});
+	</script>
+</h:head>
+<body >
+
+	<div class="container-fluid" >
+		<div class="row-fluid">
+			<div class="span3 " >
+				<div >
+				<ui:insert name="menu"></ui:insert>
+				</div>
+			</div>
+			<div class="span9" id="test" >
+				
+
+				
+					
+						
+							<div id="ccc" style="height: 1000px">
+							cc
+							</div>
+						
+						
+					
+						
+							
+									<div id="chy" style="height: 1000px">
+									chy
+							</div>	
+			
+							
+				
+		</div>
+</div>
+</div>
+</body>
+</html>

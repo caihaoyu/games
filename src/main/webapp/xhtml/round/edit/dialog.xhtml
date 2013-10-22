@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<div id="confirmDeleteIDlg" class="modal hide fade" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">确认删除图片</h3>
+		</div>
+		<div class="modal-body">
+			<p>是否确认删除该图片,删除后不可恢复！</p>
+		</div>
+		<div class="modal-footer">
+
+			<p:commandButton id="config" value="确认" immediate="true"
+				actionListener="#{editRoundBean.deleteImage}"
+				update="imageList,:form:message" styleClass=" btn btn-primary" />
+			<p:commandButton value="取消" type="button"
+				onclick="$('#confirmDeleteIDlg').modal('hide')" styleClass=" btn" />
+		</div>
+	</div>
+	<div id="afterSaveDlg" class="modal hide fade" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">确认</h3>
+		</div>
+		<div class="modal-body">
+			<p>操作已经成功。请选择</p>
+		</div>
+		<div class="modal-footer">
+			<p:commandButton value="返回列表页"
+				actionListener="#{editRoundBean.goBack}" styleClass=" btn " />
+			<p:commandButton value="继续添加"
+				actionListener="#{editRoundBean.clearRound}"
+				update=":form:roundGrid"
+				oncomplete="$('#afterSaveDlg').modal('hide')" styleClass=" btn" />
+			<p:commandButton value="取消" type="button"
+				onclick="$('#afterSaveDlg').modal('hide')" styleClass=" btn" />
+		</div>
+	</div>
+
+</ui:composition>

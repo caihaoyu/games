@@ -1,0 +1,129 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<p:panelGrid id="roundGrid" style="width:100%">
+		<f:facet name="header">
+			<p:row>
+				<p:column colspan="2">基础数据</p:column>
+			</p:row>
+		</f:facet>
+		<p:row>
+			<p:column>
+				<div style="float: left">
+					<h:outputLabel for="answer" value="名字: *"
+						style="display: inline-block; padding-top: 3px;" />
+				</div>
+				<div>
+					<p:inputText id="answer" value="#{editRoundBean.round.answer}"
+						label="Firstname" style="display: inline-block;" />
+				</div>
+			</p:column>
+			<p:column>
+				<div style="float: left">
+					<h:outputLabel for="help" value="帮助信息: *"
+						style="display: inline-block; padding-top: 3px;" />
+				</div>
+				<div>
+					<p:inputText id="help" value="#{editRoundBean.round.help}"
+						label="Surname" />
+				</div>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2" styleClass="ui-widget-header"
+				style="text-align:center">
+				<h:outputText value="选项"></h:outputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:outputPanel id="optionPanel">
+				<div style="float: left; padding-top: 2px; padding-right: 3px;">
+					<p:autoComplete value="#{editRoundBean.selectedOptions}"
+						id="options" completeMethod="#{editRoundBean.completeOption}"
+						var="option" itemLabel="#{option.name}" itemValue="#{option}"
+						converter="com.chy.OptionConvert" multiple="true">
+						<p:ajax event="itemSelect"
+							listener="#{editRoundBean.optionHandelSelect}" update="optionPanel" />
+						<p:ajax event="itemUnselect" update="optionPanel"
+							listener="#{editRoundBean.optionUnSelect}" />
+					</p:autoComplete>
+				</div>
+				<div style="padding-top: 3px">
+					<p:commandButton id="addOptionButton" immediate="true" process="options,@this"
+						styleClass="btn-small btn-primary"
+						style="display: inline-block; position: relative; top: 50%;"
+						value="增加选项" actionListener="#{editRoundBean.saveNewOption}"
+						update="optionPanel,message">
+					</p:commandButton>
+				</div>
+				</p:outputPanel>
+			</p:column>
+		</p:row>
+
+		<p:row>
+			<p:column colspan="2" styleClass="ui-widget-header"
+				style="text-align:center">
+				<h:outputText value="上传图片"></h:outputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:fileUpload fileUploadListener="#{editRoundBean.handleFileUpload}"
+					mode="advanced" multiple="true" update="imageList,message"
+					sizeLimit="200000" fileLimit="10"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/" label="选择文件"
+					cancelLabel="取消上传" uploadLabel="开始上传" />
+			</p:column>
+		</p:row>
+		<p:row id="imageTitle">
+			<p:column colspan="2" styleClass="ui-widget-header"
+				style="text-align:center">
+				<h:outputText value="图片"></h:outputText>
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<p:outputPanel id="imageList">
+					<p:outputPanel rendered="#{editRoundBean.images.size() gt 0 }">
+						<ul class="thumbnails">
+							<ui:repeat var="image" value="#{editRoundBean.images}"
+								varStatus="status">
+								<li>
+									<div class="thumbnail">
+										 <img
+											alt="300x200" data-src="holder.js/300x200"
+											style="width: 300px; height: 200px;" src="#{image.base64}" />
+										<div style="text-align: right">
+											<p:commandButton styleClass="btn" value="删除"
+												actionListener="#{editRoundBean.showConfirmByD(image.id)}"
+												update=":form:message,:form:imageList">
+											</p:commandButton>
+										</div>
+									</div>
+								</li>
+							</ui:repeat>
+						</ul>
+					</p:outputPanel>
+					<p:outputPanel style="text-align:center;"
+						rendered="#{editRoundBean.images.size() le 0 }">
+						<h:outputText value="无图片请添加"></h:outputText>
+					</p:outputPanel>
+				</p:outputPanel>
+			</p:column>
+		</p:row>
+		<f:facet name="footer">
+			<p:row>
+				<p:column colspan="2">
+					<p:commandButton value="保存"
+						actionListener="#{editRoundBean.saveRound}"
+						update="roundGrid,message" style="margin:0"
+						styleClass="btn btn-primary" />
+				</p:column>
+			</p:row>
+		</f:facet>
+	</p:panelGrid>
+</ui:composition>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+	default-lazy-init="true">
+	<context:component-scan base-package="com.chy.*" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://127.0.0.1:3306/games?characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+	        <property name="dataSource" ref="dataSource"/>
+	        <property name="packagesToScan">
+	            <list>
+	                <value>com.chy.model</value>
+	            </list>
+	        </property>
+	        
+	        <property name="hibernateProperties">
+	            <props>
+	                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+	                <prop key="hibernate.hbm2ddl.auto">update</prop>
+	                <prop key="hibernate.show_sql">true</prop>
+	                <prop key="hibernate.format_sql">false</prop>
+	                <prop key="hibernate.query.substitutions">true 1, false 0</prop>
+	                <prop key="hibernate.default_batch_fetch_size">16</prop>
+	                <prop key="hibernate.generate_statistics">false</prop>
+	                <prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+	                 
+	            </props>
+	        </property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+		<property name="scopes">
+			<map>
+				<entry key="view">
+					<bean class="com.chy.scope.ViewScope" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>      

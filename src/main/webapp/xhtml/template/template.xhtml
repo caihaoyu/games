@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	lang="zh-CN"
+	 xml:lang="zh-CN">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="google-style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="doc.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="primefaces.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+	<script type="text/javascript">
+	
+
+		function afa() {
+			alert(document.documentElement.clientHeight);
+		}
+
+		jQuery.datepicker.regional['zh_CN'] = {
+			closeText : '关闭',
+			prevText : '&#x3c;上月',
+			nextText : '下月&#x3e;',
+			currentText : '今天',
+			monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月',
+					'九月', '十月', '十一月', '十二月' ],
+			monthNamesShort : [ '一', '二', '三', '四', '五', '六', '七', '八', '九',
+					'十', '十一', '十二' ],
+			dayNames : [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ],
+			dayNamesShort : [ '周日', '周一', '周二', '周三', '周四', '周五', '周六' ],
+			dayNamesMin : [ '日', '一', '二', '三', '四', '五', '六' ],
+			weekHeader : '周',
+			dateFormat : 'yy-mm-dd',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : true,
+			yearSuffix : '年'
+		};
+		jQuery.datepicker.setDefaults(jQuery.datepicker.regional['zh-CN']);
+		$("document")
+				.ready(
+						function() {
+							var value;
+							PrimeFaces.widget.AutoComplete = PrimeFaces.widget.AutoComplete
+									.extend({
+
+										// overrides the key bindings       
+										bindKeyEvents : function() {
+
+											this._super();
+
+											var _self = this;
+
+											// Additional event listener for property change events.
+											// The event gets fired when values are pasted via context menu
+											// or are typed into the input field. The timeout should prevent
+											// this method from firing too many search requests, since
+											// keydown triggers property change as well...
+
+											this.input
+													.bind(
+															'input propertychange',
+															function() {
+
+																value = $(this)
+																		.val();
+																if (!value.length) {
+																	_self
+																			.hide();
+																}
+
+																if (value.length >= _self.cfg.minLength) {
+
+																	//Cancel the search request if user types within the timeout
+																	if (_self.timeout) {
+																		clearTimeout(_self.timeout);
+																	}
+
+																	_self.timeout = setTimeout(
+																			function() {
+																				_self
+																						.search(value);
+																					
+
+																			},
+																			_self.cfg.delay);
+
+																}
+															});
+										},
+										invokeItemSelectBehavior : function(
+												event, itemValue) {
+											if (this.cfg.behaviors) {
+												var itemSelectBehavior = this.cfg.behaviors['itemSelect'];
+
+												if (itemSelectBehavior) {
+													var ext = {
+														params : [ {
+															name : this.id
+																	+ '_itemSelect',
+															value : itemValue
+														} ]
+													};
+
+													itemSelectBehavior.call(
+															this, event, ext);
+													value=null;
+												}
+											}
+										}
+									});
+						});
+	</script>
+</h:head>
+<body>
+	<ui:insert name="navbar"></ui:insert>
+	
+	<h:form id="form" enctype="multipart/form-data">
+		
+		
+		<ui:insert name="head"></ui:insert>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 bs-docs-sidebar " id="nex">
+					<div>
+						<ui:insert name="menu"></ui:insert>
+					</div>
+				</div>
+				<div class="span9" id="test">
+					<div style="margin: 30px 0 0;">
+						<ui:insert name="main"></ui:insert>
+						<ui:insert name="dialog"></ui:insert>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ui:insert name="message"></ui:insert>
+		
+	</h:form>
+</body>
+</html>

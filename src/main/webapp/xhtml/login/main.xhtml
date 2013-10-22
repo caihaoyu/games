@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<h1 style="margin-top: 30px;color: #ffffff">故事接龙</h1>
+	<h3 style="color: #ffffff;">和朋友分享我的故事</h3>
+	<div style="border: 1px solid rgba(0, 0, 0, 0.3);background: #ffffff">
+		<div class="modal-header" style="text-align: left;">
+			<h3>登录故事接龙...</h3>
+		</div>
+		<div class="modal-body">
+			<p:inputText label="帐号:" value="#{loginBean.account}" placeholder="请输入帐号..."></p:inputText>
+			<p:password label="密码:" value="#{loginBean.password}" placeholder="请输入密码..."></p:password>
+			
+		</div>
+		<div class="modal-footer">
+			<p:commandButton styleClass="btn btn-primary" actionListener="#{loginBean.login}" update="message" value="登录"></p:commandButton>
+		</div>
+	</div>
+</ui:composition>

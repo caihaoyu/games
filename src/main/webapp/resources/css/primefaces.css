@@ -1,0 +1,81 @@
+@CHARSET "US-ASCII";
+.ui-datatable td{
+    text-align: center !important;
+}
+/* .navbar-inverse .navbar-inner {
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #FFFFFF, #FFFFFF);
+    background-repeat: repeat-x;
+    border-color: #FFFFFF;
+} */
+.ui-datatable  .ui-state-default{
+	background-image: none !important;
+	border-color: #E6E6E6 !important;
+}
+.ui-growl {
+   
+    top: 35px !important;
+}
+.ui-dialog .ui-dialog-buttonpane {
+    text-align: right !important;
+}
+
+.ui-state-default{
+     box-shadow: none !important;
+}
+.btn-primary .ui-state-focus {
+     box-shadow: none !important;
+}
+.btn-primary .ui-state-hover {
+     box-shadow: none !important; 
+}
+.btn-small .ui-button-text {
+    padding: 0 !important;
+}
+.ui-fileupload-buttonbar .ui-state-default{
+	background-image: none !important;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+   
+    height: 25px !important;
+    line-height: 25px !important;
+}
+.ui-autocomplete-panel{
+	padding-top: 20px !important;
+}
+.ui-autocomplete-panel .ui-autocomplete-list-item {
+   
+    padding: 7px 20px !important;
+   
+}
+.ui-autocomplete-input-token {
+   
+    width: 98% !important;
+}
+.ui-autocomplete-input-token  input{
+   
+    width: 100% !important;
+}
+.ui-paginator-rpp-options{
+	margin-bottom: 5px!important;
+}
+span.num{  
+    background-color: #f00;  
+    background-image: -webkit-linear-gradient(top, #f00, #600); /* Chrome 10+, Saf5.1+, iOS 5+ */  
+    background-image:    -moz-linear-gradient(top, #f00, #600); /* FF3.6+ */  
+    background-image:     -ms-linear-gradient(top, #f00, #600); /* IE10 */  
+    background-image:      -o-linear-gradient(top, #f00, #600); /* Opera 11.10+ */    
+    color:#fff;  
+    font-family:Verdana;  
+    font-weight:normal;  
+    padding:2px 5px;  
+    border:3px solid #fff;  
+    border-radius:15px;  
+    position:absolute;  
+    margin-top:-20px;  
+    margin-left:-10px;  
+    box-shadow: 0 2px 3px 0px rgba(0,0,0,1);  
+    text-shadow: -1px -1px 0 #000;  
+}
+
+
