@@ -43,19 +43,27 @@
 		jQuery.datepicker.setDefaults(jQuery.datepicker.regional['zh-CN']);
 		$("document")
 				.ready(function() {
-					$('.thumbnails').wookmark();
+					  var handler = $('#storyList li');
+					    handler.wookmark({
+					          // Prepare layout options.
+					          autoResize: true, // This will auto-update the layout when the browser window is resized.
+					          container: $('#main'), // Optional, used for some extra CSS styling
+					          offset: 5, // Optional, the distance between grid items
+					          outerOffset: 20, // Optional, the distance to the containers border
+					          itemWidth: 210 // Optional, the width of a grid item
+					      });
 				});
 						
 	</script>
 </h:head>
-<body>
+<body style="background: url('/games/resources/img/bg4.jpg') repeat scroll 0 0/cover rgba(0, 0, 0, 0);">
 	<ui:insert name="navbar"></ui:insert>
 	
 	<h:form id="form" enctype="multipart/form-data">
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12" id="test">
-					<div style="margin: 30px 0 0;">
+					<div >
 						<ui:insert name="main"></ui:insert>
 						<ui:insert name="dialog"></ui:insert>
 					</div>
