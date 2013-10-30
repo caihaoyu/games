@@ -379,7 +379,7 @@ select:focus:required:invalid:focus {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
-/* Override 脽some of the values in Bootstrap
+/* Override ���some of the values in Bootstrap
 /* White icons with optional class, or on hover/active states of certain elements */
 .nav-list > .active > a > [class^="icon-"],
 .nav-list > .active > a > [class*=" icon-"],
@@ -2370,7 +2370,7 @@ select:focus:required:invalid:focus {
   text-shadow: none;
 }
 .modal-backdrop {
-  background-color: #ffffff;
+  background-color: #000000;
 }
 .modal-backdrop.fade {
   opacity: 0;
