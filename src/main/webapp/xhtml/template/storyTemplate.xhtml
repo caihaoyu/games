@@ -2,9 +2,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	lang="zh-CN"
-	 xml:lang="zh-CN">
+	xmlns:f="http://java.sun.com/jsf/core" lang="zh-CN" xml:lang="zh-CN">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
 	<h:outputStylesheet library="css" name="bootstrap-responsive.min.css"></h:outputStylesheet>
@@ -44,14 +42,17 @@
 						
 	</script>
 </h:head>
-<body style="background: url('/games/resources/img/bg6_meitu_2.jpg') repeat scroll 0 0/cover rgba(0, 0, 0, 0);">
-	<ui:insert name="navbar"></ui:insert>
-	
-	<h:form id="form" enctype="multipart/form-data" styleClass="form-horizontal">
+<body
+	style="background: url('/games/resources/img/bg6_meitu_2.jpg') repeat scroll 0 0/cover rgba(0, 0, 0, 0);">
+
+
+	<h:form id="form" enctype="multipart/form-data"
+		styleClass="form-horizontal">
+		<ui:insert name="navbar"></ui:insert>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12" id="test">
-					<div >
+					<div>
 						<ui:insert name="main"></ui:insert>
 						<ui:insert name="dialog"></ui:insert>
 					</div>
@@ -59,7 +60,7 @@
 			</div>
 		</div>
 		<ui:insert name="message"></ui:insert>
-		
+
 	</h:form>
 </body>
 </html>

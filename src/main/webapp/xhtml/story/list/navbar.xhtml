@@ -13,7 +13,7 @@
 					class="icon-bar"></span>
 			</button>
 			<div class="storyMenu">
-				<a  onclick="$('#addStoryDilog').modal();" >创建故事</a>
+				<p:commandLink update="addStoryDilogBody" actionListener="#{addStoryBean.clean}">创建故事</p:commandLink>
 				<a href="/">好友列表</a>
 			</div>
 

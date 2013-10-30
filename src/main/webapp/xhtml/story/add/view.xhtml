@@ -4,20 +4,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<div id="addStoryDilog" class="modal hide fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header" style="text-align: left;">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">×</button>
-				<h3 id="myModalLabel">创建我的故事</h3>
-			</div>
-			<div class="modal-body">
-
+	<div id="addStoryDilog" class="modal hide fade" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header" style="text-align: left;">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">创建我的故事</h3>
+		</div>
+		<div class="modal-body">
+			<p:outputPanel id="addStoryDilogBody">
 				<div class="control-group">
 					<p:outputLabel for="storyTitle" styleClass="control-label"
 						value="标题 " />
 					<div class="controls">
-						<p:inputText id="storyTitle" />
+						<p:inputText id="storyTitle" value="#{addStoryBean.title}" />
 					</div>
 				</div>
 				<div class="control-group">
@@ -25,8 +25,9 @@
 						for="storyRule"></p:outputLabel>
 					<div class="controls">
 						<p:inputTextarea id="storyRule" rows="5" cols="40"
-							counter="counter" maxlength="100" counterTemplate="还有{0}字可填写"
-							placeholder="请填写规则如：背景不限，人物不限" style="width:auto !important;">
+							counter="counter" maxlength="100" value="#{addStoryBean.rule}"
+							counterTemplate="还可填写{0}字" placeholder="请填写规则如：背景不限，人物不限"
+							style="width:auto !important;">
 						</p:inputTextarea>
 						<br />
 						<h:outputText id="counter" />
@@ -36,20 +37,33 @@
 					<p:outputLabel value="故事开头 " styleClass="control-label"
 						for="storyHeander"></p:outputLabel>
 					<div class="controls">
-						<p:inputTextarea id="storyHeander" rows="5" cols="40"
-							counter="headerCounter" maxlength="100"
-							counterTemplate="还有{0}字可填写 "
-							placeholder="请填写故事的开始如：这是个阳光明媚的早上，我去吃了个早点。"
+						<p:inputTextarea id="storyHeander" value="#{addStoryBean.header}"
+							rows="5" cols="40" counter="headerCounter" maxlength="100"
+							counterTemplate="还可填写{0}字 "
+							placeholder="请填写故事的开始好方便朋友们接下去如：这是个阳光明媚的早上，我去吃了个早点。"
 							style="width:auto !important;">
 						</p:inputTextarea>
 						<br />
 						<h:outputText id="headerCounter" />
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<p:commandButton styleClass="btn btn-primary"
-					actionListener="#{loginBean.login}" update="message" value="保存"></p:commandButton>
-			</div>
+				<div class="control-group">
+					<p:outputLabel value="模式 " styleClass="control-label"
+						for="storyHeander"></p:outputLabel>
+					<div class="controls">
+						<p:selectOneRadio id="mode" value="#{addStoryBean.mode}">
+							<f:selectItem itemLabel="公开" itemDescription="选择公开模式"  itemValue="0" />
+							<f:selectItem itemLabel="私有" itemValue="1" />
+						</p:selectOneRadio>
+					</div>
+				</div>
+			</p:outputPanel>
 		</div>
+		<div class="modal-footer">
+			<p:commandButton styleClass="btn btn-primary"
+				actionListener="#{addStoryBean.save}" update="message" value="保存"></p:commandButton>
+			<p:commandButton value="取消" type="button"
+				onclick="$('#addStoryDilog').modal('hide')" styleClass=" btn" />
+		</div>
+	</div>
 </ui:composition>
