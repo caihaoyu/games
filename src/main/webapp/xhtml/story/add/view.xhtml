@@ -47,21 +47,11 @@
 						<h:outputText id="headerCounter" />
 					</div>
 				</div>
-				<div class="control-group">
-					<p:outputLabel value="模式 " styleClass="control-label"
-						for="storyHeander"></p:outputLabel>
-					<div class="controls">
-						<p:selectOneRadio id="mode" value="#{addStoryBean.mode}">
-							<f:selectItem itemLabel="公开" itemDescription="选择公开模式"  itemValue="0" />
-							<f:selectItem itemLabel="私有" itemValue="1" />
-						</p:selectOneRadio>
-					</div>
-				</div>
 			</p:outputPanel>
 		</div>
 		<div class="modal-footer">
 			<p:commandButton styleClass="btn btn-primary"
-				actionListener="#{addStoryBean.save}" update="message" value="保存"></p:commandButton>
+				actionListener="#{addStoryBean.save}" update="message" value="下一步"></p:commandButton>
 			<p:commandButton value="取消" type="button"
 				onclick="$('#addStoryDilog').modal('hide')" styleClass=" btn" />
 		</div>

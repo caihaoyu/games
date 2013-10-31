@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<script type="text/javascript">
+		$("document").ready(function() {
+
+		});
+	</script>
+	<!-- <audio src="/games/resources/music/backmusic.ogg" autoplay="autoplay">
+		<p>Your browser does not support the audio element</p>
+	</audio> -->
+	<ul id="storyList" class="storyList thumbnails" style="">
+
+		<li>
+			<div class="thumbnail" style="color: #ffffff">
+				<h3 style="padding-left: 0.5em;">我们来玩故事接龙吧</h3>
+				<p:panel header="故事规则">
+					<p>天马行空不拘小节……人物随意，谁都可以。</p>
+				</p:panel>
+				<p:panel header="故事开头">
+					<p>一天 Iffy
+						同学被教室的们夹到后十分沮丧，因为他丫发型乱了，衣服破了……回家的时候他拖着沉重的步伐在街上闲逛，到了一个旧书摊前发现一本奇怪的书……
+					</p>
+				</p:panel>
+				<p:panel header="ciahoyu 2013-03-05">
+					<p>这时，书摊老板从好几堆书后抬起头，看见iffy，愣了愣，推了推眼镜，眼镜瞪大了，抬起手指着他，嘴里说着：你、你、你……
+					</p>
+				</p:panel>
+
+				<div
+					style="padding: 0.2em; font-size: 1.1em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+					<div
+						class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"
+						style="padding: 0.5em 1em 0.3em;">
+						<span class="ui-panel-title">caihaoyu 2013-03-21</span>
+					</div>
+				</div>
+				<p:panel>
+					<p>是不是我的"有缘人",我在这里埋伏很久了,有人来看这本书就是为了>>>>></p>
+					<!-- <a href="#"
+						style="color: #ffffff !important; "
+						class="icon-thumbs-up icon-white"></a>
+						<span style="color: #ffffff;font-size: 10px; position: relative;top: -2px;">(8)</span> -->
+				</p:panel>
+				<br />
+				<legend></legend>
+				<p>caihaoyu</p>
+				<div>
+				<p:inputTextarea 
+					rows="5" cols="40" counter="chainCounter" maxlength="100"
+					counterTemplate="还可填写{0}字 "
+					style="width:auto !important;background:0!important;color:#ffffff">
+				</p:inputTextarea>
+				<br />
+				<h:outputText id="chainCounter" />
+				</div>
+				<br/>
+				<a class="btn btn-primary" href="#">续接</a>
+
+
+			</div>
+		</li>
+	</ul>
+</ui:composition>

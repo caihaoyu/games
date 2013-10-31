@@ -28,7 +28,7 @@ public class StoryServiceImpl extends AbstractServiceImpl<Story, String>
 
 	@Transactional(readOnly=false)
 	@Override
-	public void addStory(String title, String header, String rule,User user) {
+	public String addStory(String title, String header, String rule,User user) {
 		Story story=new Story();
 		story.setAuthor(user);
 		story.setRule(rule);
@@ -44,6 +44,6 @@ public class StoryServiceImpl extends AbstractServiceImpl<Story, String>
 		item.setCreateDate(new Date());
 		item.setModificationdDate(new Date());
 		itemDao.saveOrUpdate(item);
-
+		return story.getId();
 	}
 }

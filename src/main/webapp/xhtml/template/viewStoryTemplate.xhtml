@@ -44,18 +44,19 @@
 						
 	</script>
 </h:head>
-<body style="background: url('/games/resources/img/bg6_meitu_1.jpg') repeat scroll 0 0/cover rgba(0, 0, 0, 0);">
-	<ui:insert name="navbar"></ui:insert>
-	
+<body style="background: url('/games/resources/img/bg6_meitu_2.jpg') repeat scroll 0 0/cover rgba(0, 0, 0, 0);">
 	<h:form id="form" enctype="multipart/form-data" styleClass="form-horizontal">
+		<ui:insert name="navbar"></ui:insert>
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span12" id="test">
+				<div class="span2"></div>
+				<div class="span8" id="test" style="margin-top: 20px;">
 					<div >
 						<ui:insert name="main"></ui:insert>
 						<ui:insert name="dialog"></ui:insert>
 					</div>
 				</div>
+				<div class="span2"></div>
 			</div>
 		</div>
 		<ui:insert name="message"></ui:insert>

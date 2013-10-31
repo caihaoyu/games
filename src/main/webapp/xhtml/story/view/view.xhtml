@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/xhtml/template/viewStoryTemplate.xhtml">
+	
+	<ui:define name="main">
+		<ui:include src="/xhtml/story/view/viewMain.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="dialog">
+		<ui:include src="/xhtml/story/list/dialog.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="navbar">
+		<ui:include src="/xhtml/story/list/navbar.xhtml"></ui:include>
+	</ui:define>
+	<ui:define name="message">
+		<p:growl id="message" showDetail="true" autoUpdate="true"></p:growl>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,6 +1,6 @@
 package com.chy.view.bean.story;
 
-import java.util.Date;
+import java.io.IOException;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.ExternalContext;
@@ -13,8 +13,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.chy.model.User;
-import com.chy.model.Story.Item;
-import com.chy.model.Story.Story;
 import com.chy.service.ItemService;
 import com.chy.service.StoryService;
 import com.chy.view.bean.BaseBean;
@@ -34,6 +32,7 @@ public class AddStoryBean extends BaseBean {
 	private User user;
 	
 	private int mode;
+	
 
 	@PostConstruct
 	public void setup() {
@@ -41,12 +40,24 @@ public class AddStoryBean extends BaseBean {
 				.getExternalContext();
 		HttpSession session = (HttpSession) externalContext.getSession(false);
 		user = (User) session.getAttribute("user");
+		if(user==null){
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/games/xhtml/story/lgoin/login.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void save() {
-		storyService.addStory(title, header, rule, user);
-		RequestContext rc = RequestContext.getCurrentInstance();
-		rc.execute("$('#addStoryDilog').modal('hide');");
+		String storyId=storyService.addStory(title, header, rule, user);
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/games/xhtml/story/view/view.xhtml?storyId="+storyId);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
